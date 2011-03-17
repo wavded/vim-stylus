@@ -8,8 +8,8 @@ Unzip tar into your `.vim` directory
 Clone this git repo in your `bundle` directory.
 
 ## Todo
-This is a work in progress, major tasks include (pull requests welcome):
-  * Better indentation support
+This is a work in progress (pull requests welcome), major remaining tasks include:
+ - Better indentation support
 
 ## Creds
 This is based on the excellent work from Tim Pope on sass.vim.
