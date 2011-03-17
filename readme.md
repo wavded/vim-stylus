@@ -8,10 +8,8 @@ Unzip tar into your `.vim` directory
 Clone this git repo in your `bundle` directory.
 
 ## Todo
-This is by no means complete.  Please help if you'd like, I'm taking patches :)  The following is left to be done:
-* Syntax highlighting for controls and types.
-* Syntax hightlighting for user defined functions
-* Better indentation support
+This is a work in progress, major tasks include (pull requests welcome):
+  * Better indentation support
 
 ## Creds
 This is based on the excellent work from Tim Pope on sass.vim.
