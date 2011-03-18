@@ -10,6 +10,40 @@ endif
 
 runtime! syntax/css.vim
 
+" Author: Hsiaoming Young (sopheryoung@gmail.com)
+" CSS3 Syntax Adapted From: CSS3.vim - http://www.vim.org/scripts/script.php?script_id=3042
+syn keyword cssTagName article aside audio bb canvas command datagrid
+syn keyword cssTagName datalist details dialog embed figure footer
+syn keyword cssTagName header hgroup keygen mark meter nav output
+syn keyword cssTagName progress time ruby rt rp section time video
+syn keyword cssCommonAttr contained contenteditable contextmenu draggable hidden item
+syn keyword cssCommonAttr contained itemprop list subject spellcheck
+syn match cssUIProp contained "\<box-sizing\>"
+syn match cssUIProp contained "\<outline-\(width\|style\|offset\|color\)\>"
+syn match cssUIProp contained "\<nav-\(index\|up\|right\|down\|left\)\>"
+syn keyword cssUIProp contained resize outline
+syn keyword cssCommonAttr contained columns
+syn match cssCommonAttr contained "\<column-\(width\|span\|rule\|gap\|fill\|count\)\>"
+syn match cssCommonAttr contained "\<column-rule-\(color\|width\|style\)\>"
+syn match cssCommonAttr contained "\<column-break-\(after\|before\)\>"
+syn match cssBoxProp "\<border-\(image\|radius\)\=\>" contained
+syn match cssBoxProp "\<\(box-shadow\)\>" contained
+syn keyword cssColorProp contained opacity
+syn match cssTextAttr contained "\<text-shadow\|text-overflow\|word-wrap\>"
+syn match cssColorProp contained "\<background\(-\(origin\|clip\|size\)\)\="
+syn match cssColor contained "\<rgb\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
+syn match cssColor contained "\<rgba\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
+syn match cssColor contained "\<hsl\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
+syn match cssColor contained "\<hsla\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
+syn match cssTextProp contained "\<word-wrap\>"
+syn match cssTextProp contained "\<break-word\>"
+syn match cssTextProp contained "\<break-all\>"
+syn match cssTextProp contained "\<text-overflow\>"
+syn match cssBoxProp contained "\<box-sizing\>"
+syn match cssBoxProp contained "\<border-image\>"
+syn match cssBoxProp contained "\<border-\(\(top-left\|top-right\|bottom-right\|bottom-left\)-radius\)\>"
+" end CSS3 support
+
 syn case ignore
 
 syn cluster stylusCssAttributes contains=css.*Attr,stylusComment,cssValue.*,cssColor,cssURL,sassDefault,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssRenderProp
@@ -26,7 +60,10 @@ syn match stylusProperty "^\s*\zs\s\%(\%([[:alnum:]-]\|#{[^{}]*}\)\+:\?\|:[[:aln
 syn match stylusVariableAssignment "\%([[:alnum:]_-]\+\s*\)\@<==" nextgroup=stylusCssAttribute,stylusVariable skipwhite
 
 "syn match sassCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@sassCssAttributes,sassVariable,sassFunction,sassInterpolation
-syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl
+syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl,stylusUserFunction
+
+syn match stylusUserFunction "^\s*\%([[:alnum:]_-]\+\)(\@="
+syn match stylusUserFunction "\<\%([^)]*\)\>(\@=" contained
 
 syn match stylusFunction "\<\%(red\|green\|blue\|alpha\|dark\|light\)\>(\@=" contained
 syn match stylusFunction "\<\%(hue\|saturation\|lightness\|typeof\|unit\|match\)\>(\@=" contained
@@ -73,8 +110,8 @@ hi def link stylusTodo                  Todo
 " hi def link sassWarn                    sassControl
 hi def link stylusVariable              Identifier
 hi def link stylusControl               PreProc
+hi def link stylusUserFunction          PreProc
 hi def link stylusFunction              Function
-hi def link stylusUserFunction          Special
 " hi def link sassFor                     PreProc
 " hi def link sassEscape                  Special
 " hi def link sassIdChar                  Special
