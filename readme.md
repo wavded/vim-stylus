@@ -1,5 +1,5 @@
 # stylus.vim
-Syntax hightlighting for [Stylus](http://learnboost.github.com/stylus/).
+Syntax hightlighting for [Stylus](http://learnboost.github.com/stylus/).  CSS3/HTML5 support taken and adapted from [css3.vim](http://www.vim.org/scripts/script.php?script_id=3042) by Hsiaoming Young.
 
 ## Manual Installation
 Unzip tar into your `.vim` directory
