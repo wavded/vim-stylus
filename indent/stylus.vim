@@ -10,31 +10,47 @@ endif
 unlet! b:did_indent
 let b:did_indent = 1
 
-setlocal autoindent sw=2 sts=2 ts=2 et
-setlocal indentexpr=GetSylusIndent()
-setlocal indentkeys=o,O,*<Return>,<:>,!^F
+setlocal autoindent sw=2 et
+setlocal indentexpr=GetStylusIndent()
+setlocal indentkeys=o,O,*<Return>,},],0),!^F
+setlocal formatoptions+=r
 
-" Only define the function once.
-if exists("*GetSylusIndent")
+if exists("*GetStylusIndent")  " only define once
   finish
 endif
 
-let s:property = '^\s*:\|^\s*[[:alnum:]-]\+\%(:\|\s*=\)'
+let s:userfunc = "^\s*\%([[:alnum:]_-]\+\)("
 
-function! GetSylusIndent()
+function! GetStylusIndent()
   let lnum = prevnonblank(v:lnum-1)
-  let line = substitute(getline(lnum),'\s\+$','','')
-  let cline = substitute(substitute(getline(v:lnum),'\s\+$','',''),'^\s\+','','')
-  let lastcol = strlen(line)
-  let line = substitute(line,'^\s\+','','')
-  let indent = indent(lnum)
-  let cindent = indent(v:lnum)
-  if line !~ s:property && cline =~ s:property
-    return indent + &sw
-  elseif line =~ s:property && cline !~ s:property
-    return indent - &sw
+  if lnum == 0
+    return 0
+  endif
+  let line = substitute(getline(lnum),'\s\+$','','')  " get last line strip ending whitespace
+  let cline = substitute(substitute(getline(v:lnum),'\s\+$','',''),'^\s\+','','')  " get current line, trimmed
+  let lastcol = strlen(line)  " get last col in prev line
+  let line = substitute(line,'^\s\+','','')  " then remove preceeding whitespace
+  let indent = indent(lnum)  " get indent on prev line
+  let cindent = indent(v:lnum)  " get indent on current line
+  let increase = indent + &sw  " increase indent by the shift width
+  if indent == indent(lnum)
+    let indent = cindent <= indent ? -1 : increase
+  endif
+
+  let group = synIDattr(synID(lnum,lastcol,1),'name')
+
+  echo group
+
+  if line =~? '^[[:alnum:]_-]\+$'
+    return increase
+  " elseif group == 'jadeFilter'
+  "   return increase
+  " elseif line == '-#'
+  "   return increase
+  elseif group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
+    return increase
   else
-    return -1
+    return indent
   endif
 endfunction
 
