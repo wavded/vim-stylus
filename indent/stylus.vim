@@ -19,8 +19,6 @@ if exists("*GetStylusIndent")  " only define once
   finish
 endif
 
-let s:userfunc = "^\s*\%([[:alnum:]_-]\+\)("
-
 function! GetStylusIndent()
   let lnum = prevnonblank(v:lnum-1)
   if lnum == 0
@@ -41,12 +39,8 @@ function! GetStylusIndent()
 
   echo group
 
-  if line =~? '^[[:alnum:]_-]\+$'
+  if line =~? '^[[:alnum:]_-]\+$' " TODO: clean up this match, not working yet
     return increase
-  " elseif group == 'jadeFilter'
-  "   return increase
-  " elseif line == '-#'
-  "   return increase
   elseif group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
     return increase
   else
