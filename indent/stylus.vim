@@ -39,9 +39,9 @@ function! GetStylusIndent()
 
   echo group
 
-  if line =~? '^[[:alnum:]_-]\+$' " TODO: clean up this match, not working yet
+  if group !~? 'css.*' && line =~? ')\s*$' " match user functions
     return increase
-  elseif group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
+  elseif group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssBraces|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
     return increase
   else
     return indent
