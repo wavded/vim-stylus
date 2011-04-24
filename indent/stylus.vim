@@ -37,9 +37,10 @@ function! GetStylusIndent()
 
   let group = synIDattr(synID(lnum,lastcol,1),'name')
 
+  " for debugging only
   echo group
 
-  if group !~? 'css.*' && line =~? ')\s*$' " match user functions
+  if group !~? 'stylus.*' && line =~? ')\s*$' " match user functions
     return increase
   elseif group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssBraces|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
     return increase
