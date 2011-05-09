@@ -50,7 +50,7 @@ syn case ignore
 syn region cssInclude start="@import" end="\n" contains=cssComment,cssURL,cssUnicodeEscape,cssMediaType
 
 syn cluster stylusCssSelectors contains=cssTagName,cssSelector.*,cssIdentifier,cssAttributeSelector,cssPseudo.*,cssClassName
-syn cluster stylusCssAttributes contains=css.*Attr,stylusComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssRenderProp
+syn cluster stylusCssAttributes contains=css.*Attr,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssRenderProp
 
 syn region stylusDefinition matchgroup=cssBraces start="{" end="}" contains=TOP
 " syn match stylusProperty "\%([{};]\s*\|^\)\@<=\%([[:alnum:]-]\|#{[^{}]*}\)\+:" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute contained containedin=stylusDefinition
