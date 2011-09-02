@@ -63,12 +63,12 @@ syn match stylusUserFunction "^\s*\%([[:alnum:]_-]\+\)(\@="
 syn match stylusUserFunction "\<\%([^)]*\)\>(\@=" contained
 
 syn match stylusFunction "\<\%(red\|green\|blue\|alpha\|dark\|light\)\>(\@=" contained
-syn match stylusFunction "\<\%(hue\|saturation\|lightness\|typeof\|unit\|match\)\>(\@=" contained
-syn match stylusFunction "\<\%(hsla\|hsl\|rgba\|rgb\|lighten\|darken\|lighten-by\|darken-by\)\>(\@=" contained
-syn match stylusFunction "\<\%(abs\|ceil\|floor\|round\|min\|max\|even\|sin\|cos\|odd\|sum\|avg\|join\)\>(\@=" contained
-syn match stylusFunction "\<\%(desaturate\|saturate\|unquote\|quote\)\>(\@=" contained
+syn match stylusFunction "\<\%(hue\|saturation\|lightness\|push\|unshift\|typeof\|unit\|match\)\>(\@=" contained
+syn match stylusFunction "\<\%(hsla\|hsl\|rgba\|rgb\|lighten\|darken\)\>(\@=" contained
+syn match stylusFunction "\<\%(abs\|ceil\|floor\|round\|min\|max\|even\|odd\|sum\|avg\|sin\|cos\|join\)\>(\@=" contained
+syn match stylusFunction "\<\%(desaturate\|saturate\|unquote\|quote\|s\)\>(\@=" contained
 syn match stylusFunction "\<\%(operate\|length\|warn\|error\|last\|p\|\)\>(\@=" contained
-syn match stylusFunction "\<\%(opposite-position\|image-size\)\>(\@=" contained
+syn match stylusFunction "\<\%(opposite-position\|image-size\|add-property\)\>(\@=" contained
 
 syn keyword stylusVariable null true false arguments
 syn keyword stylusControl  if else unless for in return
