@@ -32,7 +32,7 @@ syn match cssUIProp contained "\<\(transform\)\>"
 syn match cssUIProp contained "\<\(transition\)\>"
 syn keyword cssColorProp contained opacity
 syn match cssTextAttr contained "\<text-shadow\|text-overflow\|word-wrap\>"
-syn match cssColorProp contained "\<background\(-\(origin\|clip\|size\)\)\="
+syn match cssColorProp contained "\<background\(-\(origin\|clip\|size\|position\|attachment\|image\|color\|repeat\)\)\="
 syn match cssColor contained "\<rgb\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
 syn match cssColor contained "\<rgba\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
 syn match cssColor contained "\<hsl\s*(\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*,\s*\d\+\(\.\d*\)\=%\=\s*)"
