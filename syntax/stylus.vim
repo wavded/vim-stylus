@@ -54,11 +54,15 @@ syn cluster stylusCssSelectors contains=cssTagName,cssSelector.*,cssIdentifier,c
 syn cluster stylusCssAttributes contains=css.*Attr,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssRenderProp
 
 syn region stylusDefinition matchgroup=cssBraces start="{" end="}" contains=TOP
-" syn match stylusProperty "\%([{};]\s*\|^\)\@<=\%([[:alnum:]-]\|#{[^{}]*}\)\+:" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute contained containedin=stylusDefinition
-syn match stylusProperty "^\s*\%([[:alnum:]-]\+\)" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute
+
 syn match stylusVariableAssignment "\%([[:alnum:]_-]\+\s*\)\@<==" nextgroup=stylusCssAttribute,stylusVariable skipwhite
 
-syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl,stylusUserFunction
+syn match stylusProperty "\%([{};]\s*\|^\)\@<=\%([[:alnum:]-]\|#{[^{}]*}\)\+:" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute contained containedin=stylusDefinition
+syn match stylusProperty "^\s*\%([[:alnum:]-]\+\)" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute
+
+syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl,stylusUserFunction,stylusInterpolation
+
+syn match stylusInterpolation %{[[:alnum:]_-]\+}%
 
 syn match stylusUserFunction "^\s*\%([[:alnum:]_-]\+\)(\@="
 syn match stylusUserFunction "\<\%([^)]*\)\>(\@=" contained
@@ -86,6 +90,7 @@ hi def link stylusVariable              Identifier
 hi def link stylusControl               PreProc
 hi def link stylusUserFunction          PreProc
 hi def link stylusFunction              Function
+hi def link stylusInterpolation         Delimiter
 
 let b:current_syntax = "stylus"
 
