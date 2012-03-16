@@ -23,7 +23,7 @@ function! GetStylusIndent()
   if lnum == 0
     return 0
   endif
-  let line     = substitute(getline(lnum),'\s\+$','','')  " get last line strip ending whitespace
+  let line     = substitute(getline(lnum),'[\s()]\+$','','')  " get last line strip ending whitespace
   let cline    = substitute(substitute(getline(v:lnum),'\s\+$','',''),'^\s\+','','')  " get current line, trimmed
   let lastcol  = strlen(line)  " get last col in prev line
   let line     = substitute(line,'^\s\+','','')  " then remove preceeding whitespace
@@ -31,7 +31,7 @@ function! GetStylusIndent()
   let cindent  = indent(v:lnum)  " get indent on current line
   let increase = indent + &sw  " increase indent by the shift width
   if indent   == indent(lnum)
-    let indent = cindent <= indent ? -1 : increase
+    let indent = cindent <= indent ? indent : increase
   endif
 
   let group = synIDattr(synID(lnum,lastcol,1),'name')
@@ -41,7 +41,9 @@ function! GetStylusIndent()
 
   " if group !~? 'css.*' && line =~? ')\s*$' " match user functions
   "   return increase
-  if group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssBraces|cssAttributeSelector|cssPseudoClass|cssPseudoClassId)$'
+  if group =~? '\v^%(cssTagName|cssClassName|cssIdentifier|cssSelectorOp|cssSelectorOp2|cssBraces|cssAttributeSelector|cssPseudoClass|cssPseudoClassId|stylusId|stylusClass)$'
+    return increase
+  elseif (group == 'stylusUserFunction') && (indent(lnum) == '0') " mixin definition
     return increase
   else
     return indent
