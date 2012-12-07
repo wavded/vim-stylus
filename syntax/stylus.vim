@@ -89,7 +89,7 @@ syn match stylusIdChar     "#[[:alnum:]_-]\@=" nextgroup=stylusId
 
 syn keyword stylusTodo       FIXME NOTE TODO OPTIMIZE XXX contained
 
-syn region  stylusComment    start=+^\s*\/\/+ skip=+\n\s*\/\/+ end=+$+ keepend contains=stylusTodo,@Spell fold
+syn match  stylusComment    "\/\/.*" contains=stylusTodo,@Spell
 syn region  stylusCssComment start="/\*"  end="\*/" contains=stylusTodo,@Spell fold
 
 hi def link stylusCssComment            Comment
