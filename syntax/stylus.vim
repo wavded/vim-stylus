@@ -62,7 +62,7 @@ syn match stylusProperty "\%([{};]\s*\|^\)\@<=\%([[:alnum:]-]\|#{[^{}]*}\)\+:" c
 syn match stylusProperty "^\s*\zs\s\%(\%([[:alnum:]-]\|#{[^{}]*}\)\+[ :]\|:[[:alnum:]-]\+\)"hs=s+1 contains=css.*Prop skipwhite nextgroup=stylusCssAttribute
 syn match stylusProperty "^\s*\zs\s\%(:\=[[:alnum:]-]\+\s*=\)"hs=s+1 contains=css.*Prop skipwhite nextgroup=stylusCssAttribute
 
-syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl,stylusUserFunction,stylusInterpolation
+syn match stylusCssAttribute +\%("\%([^"]\|\\"\)*"\|'\%([^']\|\\'\)*'\|#{[^{}]*}\|[^{};]\)*+ contained contains=@stylusCssAttributes,stylusFunction,stylusVariable,stylusControl,stylusUserFunction,stylusInterpolation,stylusComment,stylusCssComment
 
 syn match stylusInterpolation %{[[:alnum:]_-]\+}%
 
@@ -89,7 +89,7 @@ syn match stylusIdChar     "#[[:alnum:]_-]\@=" nextgroup=stylusId
 
 syn keyword stylusTodo       FIXME NOTE TODO OPTIMIZE XXX contained
 
-syn match  stylusComment    "\/\/.*" contains=stylusTodo,@Spell
+syn match  stylusComment    "\/\/.*" contains=stylusTodo,@Spell fold
 syn region  stylusCssComment start="/\*"  end="\*/" contains=stylusTodo,@Spell fold
 
 hi def link stylusCssComment            Comment
