@@ -55,7 +55,7 @@ syn cluster stylusCssAttributes contains=css.*Attr,cssValue.*,cssColor,cssURL,cs
 
 syn region stylusDefinition matchgroup=cssBraces start="{" end="}" contains=TOP
 
-syn match stylusVariable "$[[:alnum:]_-]\+"
+syn match stylusVariable "$\?[[:alnum:]_-]\+"
 syn match stylusVariableAssignment "\%([[:alnum:]_-]\+\s*\)\@<==" nextgroup=stylusCssAttribute,stylusVariable skipwhite
 
 syn match stylusProperty "\%([{};]\s*\|^\)\@<=\%([[:alnum:]-]\|#{[^{}]*}\)\+:" contains=css.*Prop skipwhite nextgroup=stylusCssAttribute contained containedin=stylusDefinition
