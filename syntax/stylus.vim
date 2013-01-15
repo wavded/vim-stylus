@@ -352,7 +352,7 @@ syn match stylusEscape     "^\s*\zs\\"
 syn match stylusId         "[[:alnum:]_-]\+" contained
 syn match stylusIdChar     "#[[:alnum:]_-]\@=" nextgroup=stylusId
 
-syn match  stylusComment    "\/\/.*" contains=cssTodo,@Spell fold
+syn match  stylusComment    "\/\/\s.*" contains=cssTodo,@Spell fold
 
 hi def link stylusComment               Comment
 hi def link stylusVariable              Identifier
