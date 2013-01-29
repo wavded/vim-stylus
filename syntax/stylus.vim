@@ -306,9 +306,9 @@ endif
 
 " let b:current_syntax = "css"
 " 
-" if main_syntax == 'css'
-"   unlet main_syntax
-" endif
+if main_syntax == 'css'
+  unlet main_syntax
+endif
 
 " Vim syntax file
 " Language: Stylus
