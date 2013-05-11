@@ -352,7 +352,9 @@ syn match stylusEscape     "^\s*\zs\\"
 syn match stylusId         "[[:alnum:]_-]\+" contained
 syn match stylusIdChar     "#[[:alnum:]_-]\@=" nextgroup=stylusId
 
-syn match  stylusComment    "\/\/\s.*" contains=cssTodo,@Spell fold
+" TODO: Fix the weird region/containment situation. This region should not be
+" allowed in a url() function... thingy! Then we can get rid of that pesky '\s'.
+syn region stylusComment    start="//\s" end="$" contains=cssTodo,@Spell fold
 
 hi def link stylusComment               Comment
 hi def link stylusVariable              Identifier
