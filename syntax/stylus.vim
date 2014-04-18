@@ -235,6 +235,7 @@ syn match cssAdvancedProp /\(pitch-range\|pitch\)/
 syn match cssAdvancedProp /presentation-level/
 syn match cssAdvancedProp /punctuation-trim/
 syn match cssAdvancedProp /rendering-intent/
+syn match cssAdvancedProp /pointer-events/
 syn match cssAdvancedProp /\(rest-\(after\|before\)\|rest\)/
 syn match cssAdvancedProp /\(rotation-point\|rotation\)/
 syn match cssAdvancedProp /ruby-\(align\|overhang\|position\|span\)/
