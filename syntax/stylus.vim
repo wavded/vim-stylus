@@ -149,6 +149,7 @@ syn match cssTextProp /text-\(align-last\|align\|decoration\|emphasis\|height\|i
 syn match cssTextProp /\(line-stacking-\(ruby\|shift\|strategy\)\|line-stacking\|line-height\)/ contained
 syn match cssTextProp /vertical-align/ contained
 syn match cssTextProp /letter-spacing/ contained
+syn match cssTextProp /user-select/ contained
 syn match cssTextProp /white-\(space-collapse\|space\)/ contained
 syn match cssTextProp /word-\(break\|spacing\|wrap\)/ contained
 syn match cssTextProp "\<word-wrap\>" contained
