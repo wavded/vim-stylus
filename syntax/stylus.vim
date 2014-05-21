@@ -47,7 +47,7 @@ syn match cssSelector /\.[A-Za-z][A-Za-z0-9_-]\+/
 syn match cssSelector /#[A-Za-z][A-Za-z0-9_-]\+/
 syn region cssSelector start='\[' end='\]' contains=cssString
 
-syn region cssDefineBlock start="{" end="}" transparent contains=ALLBUT,stylusImportList 
+syn region cssDefineBlock start="{" end="}" transparent contains=TOP
 
 syn keyword cssCommonVal inherit initial auto both normal hidden none medium contained
 
