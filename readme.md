@@ -14,12 +14,6 @@ Clone this repo into your `.vim/bundle` directory. For example:
 
     cd ~/.vim/bundle
     git clone git://github.com/wavded/vim-stylus.git
-    
-### Autocommand to set file type
-
-Add the following autocmd to your `~/.vimrc`
-
-    autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
 
 ## Creds
 This is based on the excellent work from Tim Pope on sass.vim.
