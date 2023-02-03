@@ -1,4 +1,10 @@
 
+0.9.2 / 2023-02-03
+==================
+
+ * add; css property justify-content added [wamoyo]
+ * add; css property align-items added [wamoyo]
+
 0.9.1 / 2014-05-21
 ==================
 
